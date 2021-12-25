@@ -15,15 +15,18 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="{{ asset('@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('styles')
 </head>
 <body style="background-color:#1c1e21">
+    @include('sweet::alert')
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -59,6 +62,18 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
+                                <a id="bank" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Bank
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bank">
+                                    <a href="{{ route('home') }}" class="dropdown-item">Saldo</a>
+                                    <a href="{{ route('rekening.form-topup') }}" class="dropdown-item">Top Up Saldo</a>
+                                    <a href="{{ route('rekening.form-withdraw') }}" class="dropdown-item">Withdraw</a>
+                                    <a href="{{ route('rekening.mutasi') }}" class="dropdown-item">Laporan Mutasi</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
@@ -83,5 +98,6 @@
             @yield('content')
         </main>
     </div>
+    @stack('scripts')
 </body>
 </html>

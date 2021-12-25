@@ -26,7 +26,17 @@
                 </div>
                 @if ($hasil)
                     <div class="card-footer text-center">
-                        <span style="margin-left: 1rem;">Hasil : {{ $hasil }} Cara menaiki tangga</span>
+                        <span style="">Hasil : {{ $hasil }} Cara menaiki tangga</span>
+                        {{-- @for ($i = 1; $i <= $hasil; $i++)
+                            <br>
+                            <span style="">Cara {{ $i }} : [
+                                @php
+                                    for ($j = request('anak_tangga'); $j >= 1; $j--) {
+                                        echo 1 . ($j > 1 ? ',' : '');
+                                    }
+                                @endphp
+                            ]</span>
+                        @endfor --}}
                     </div>
                 @endif
             </div>

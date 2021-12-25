@@ -18,6 +18,8 @@ class CreateRekeningTable extends Migration
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->boolean('debit_atau_kredit');
             $table->bigInteger('nilai');
+            $table->date('tanggal');
+            $table->time('waktu');
             $table->text('keterangan')->nullable();
             $table->timestamps();
         });

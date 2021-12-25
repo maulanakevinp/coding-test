@@ -31,6 +31,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: true
 // });
 
+require('sweetalert');
 
 window.hanyaHuruf = function(evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode
