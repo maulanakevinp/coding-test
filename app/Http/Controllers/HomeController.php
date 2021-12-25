@@ -34,7 +34,22 @@ class HomeController extends Controller
 
     public function sebuah_tangga(Request $request)
     {
-        $hasil = $request->langkah;
+        $n = $request->anak_tangga;
+
+        $angka_sebelumnya   = 0;
+        $angka_sekarang     = 1;
+        $jumlah_langkah     = 0;
+        for ($i=0; $i<$n; $i++) {
+            $jumlah_langkah = $angka_sekarang + $angka_sebelumnya;
+            $angka_sebelumnya = $angka_sekarang;
+            $angka_sekarang = $jumlah_langkah;
+        }
+
+        $hasil = $jumlah_langkah;
         return view('sebuah-tangga.index', compact('hasil'));
+    }
+
+    private function f ($n) {
+        return ;
     }
 }
